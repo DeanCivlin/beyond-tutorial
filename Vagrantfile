@@ -57,6 +57,11 @@ Vagrant.configure("2") do |config|
   #   # Customize the amount of memory on the VM:
     vb.memory = "1024"
   end
+  config.vm.network(
+    "forwarded_port", guest: 8000, host: 8000, host_ip: "127.0.0.1"
+  )
+
+  config.vm.provision "shell", path: "setup.sh", privileged: false
   #
   # View the documentation for the provider you are using for more
   # information on available options.
